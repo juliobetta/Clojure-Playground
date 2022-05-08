@@ -11,7 +11,8 @@
 (defn values [first & rest]
   (str/join ", " (conj rest first)))
 
-; conditional example
+;; conditional example
+;; similar to lodash `cond`
 (defn check-card-flag
   [first-numbers]
   (cond
@@ -21,12 +22,15 @@
     :else "Invalid number"
   ))
 
+; similar to `const` in JavaScript
 (def base-character {"firstName" "Anakin"
-                     "lastName"  "Skywalker" })
+                     "lastName"  "Skywalker"})
 
-(defn with-address [options]
+(defn with-address
+  [options]
   (merge options {"planet" "Tatooine"
                   "sector" "Arkanis"}))
 
-(defn with-apparitions [options]
+(defn with-apparitions
+  [options]
   (merge options {"appearsIn" ["New Hope", "Empire", "Jedi"]}))
