@@ -20,3 +20,13 @@
     (str/starts-with? first-numbers "567") "AMEX"
     :else "Invalid number"
   ))
+
+(def base-character {"firstName" "Anakin"
+                     "lastName"  "Skywalker" })
+
+(defn with-address [options]
+  (merge options {"planet" "Tatooine"
+                  "sector" "Arkanis"}))
+
+(defn with-apparitions [options]
+  (merge options {"appearsIn" ["New Hope", "Empire", "Jedi"]}))
