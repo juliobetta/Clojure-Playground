@@ -45,18 +45,18 @@
 (deftest set-values-test
   (testing "Set values without optionals"
     (let [expected ["file path: /root/my-file.txt"
-                          "author: root"]
+                    "author: root"]
           actual (set-values "my-file.txt" "/root")]
       (is (= actual expected))))
 
   (testing "Set values with named params"
     (let [expected ["file path: /root/my-file.txt"
-                          "author: me"
-                          "comments: ahoy!"
-                          "tags: ready, done"]
+                    "author: me"
+                    "comments: ahoy!"
+                    "tags: ready, done"]
 
           actual (set-values "my-file.txt" "/root"
-                                   :author "me"
-                                   :comments "ahoy!"
-                                   :tags ["ready" "done"])]
+                             :author "me"
+                             :comments "ahoy!"
+                             :tags ["ready" "done"])]
       (is (= actual expected)))))
