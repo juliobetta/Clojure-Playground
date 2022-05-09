@@ -28,7 +28,7 @@
 ;;   ... code
 ;; )
 ;; https://stackoverflow.com/a/21915601/561610
-(deftest build-character-test-2
+(deftest build-character-test
   (testing "Build character with composition"
     (let [expected {"appearsIn" ["New Hope"
                                  "Empire"
