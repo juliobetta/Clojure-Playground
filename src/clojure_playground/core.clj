@@ -44,10 +44,10 @@
             tags []}}]
 
   (->>
-    [[true                  (format "file path: %s/%s" path filename)]
-     [true                  (str "author: " author)]
-     [(not (nil? comments)) (str "comments: " comments)]
-     [(not (empty? tags))   (str "tags: " (str/join ", " tags))]]
+    [[true                    (format "file path: %s/%s" path filename)]
+     [true                    (str "author: " author)]
+     [(not (nil? comments))   (str "comments: " comments)]
+     [(not (nil? (seq tags))) (str "tags: " (str/join ", " tags))]] ; (seq tags) returns nil if empty
 
     ;;(filter (fn [x]
     ;;  (= (first x) true)))
@@ -63,4 +63,7 @@
   (println (values 1 2 3 4 5))
   (println (check-card-flag 123884))
   (println (-> base-character with-address))
-  (println (str/join "\n" (set-values "my-file.txt" "/root" :tags ["foo" "bar"] :comments "it works!"))))
+  (println (str/join "\n" (set-values "my-file.txt"
+                                      "/root"
+                                      :tags ["foo" "bar"]
+                                      :comments "it works!"))))
