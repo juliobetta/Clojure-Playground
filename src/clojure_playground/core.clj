@@ -40,22 +40,21 @@
 (defn set-values
   [filename path                    ; required params
     & {:keys [author comments tags] ; optional params
-       :or {author "root" ; default values
+       :or {author "root"           ; default values
             tags []}}]
 
   (->>
-    [
-      [true                  (str "file path: " path "/" filename)]
-      [true                  (str "author: " author)]
-      [(not (nil? comments)) (str "comments: " comments)]
-      [(not (empty? tags))   (str "tags: " (str/join ", " tags))]]
+    [[true                  (format "file path: %s/%s" path filename)]
+     [true                  (str "author: " author)]
+     [(not (nil? comments)) (str "comments: " comments)]
+     [(not (empty? tags))   (str "tags: " (str/join ", " tags))]]
 
-    ;(filter (fn [x]
-    ;  (= (first x) true)))
+    ;;(filter (fn [x]
+    ;;  (= (first x) true)))
     (filter #(= (first %) true))
 
-    ;(map (fn [x]
-    ;  (second x)))
+    ;;(map (fn [x]
+    ;;  (second x)))
     (map #(second %))))
 
 (defn -main
@@ -64,4 +63,4 @@
   (println (values 1 2 3 4 5))
   (println (check-card-flag 123884))
   (println (-> base-character with-address))
-  (println (set-values "my-file.txt" "/root" :tags ["foo" "bar"] :comments "it works!")))
+  (println (str/join "\n" (set-values "my-file.txt" "/root" :tags ["foo" "bar"] :comments "it works!"))))

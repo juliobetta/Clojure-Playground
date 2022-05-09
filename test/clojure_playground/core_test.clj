@@ -23,40 +23,40 @@
     )))
 
 ;; declaring multiple lexical scopes:
-;; (let [var1 (doto value)
-;;       var2 (doto value)]
+;; (let [var1 "value"
+;;       var2 "value"]
 ;;   ... code
 ;; )
 ;; https://stackoverflow.com/a/21915601/561610
 (deftest build-character-test-2
   (testing "Build character with composition"
-    (let [expected (doto {"appearsIn" ["New Hope"
-                                       "Empire"
-                                       "Jedi"]
-                          "firstName" "Anakin"
-                          "lastName"  "Skywalker"
-                          "planet"    "Tatooine"
-                          "sector"    "Arkanis"})
+    (let [expected {"appearsIn" ["New Hope"
+                                 "Empire"
+                                 "Jedi"]
+                    "firstName" "Anakin"
+                    "lastName"  "Skywalker"
+                    "planet"    "Tatooine"
+                    "sector"    "Arkanis"}
           ;; composing functions with ->
           ;; -> (initial-value, ...fns)
-          actual   (doto (-> base-character with-apparitions with-address))]
+          actual   (-> base-character with-apparitions with-address)]
       (is (= actual expected)))))
 
 (deftest set-values-test
   (testing "Set values without optionals"
-    (let [expected (doto ["file path: /root/my-file.txt"
-                          "author: root"])
-          actual (doto (set-values "my-file.txt" "/root"))]
+    (let [expected ["file path: /root/my-file.txt"
+                          "author: root"]
+          actual (set-values "my-file.txt" "/root")]
       (is (= actual expected))))
 
   (testing "Set values with named params"
-    (let [expected (doto ["file path: /root/my-file.txt"
+    (let [expected ["file path: /root/my-file.txt"
                           "author: me"
                           "comments: ahoy!"
-                          "tags: ready, done"])
+                          "tags: ready, done"]
 
-          actual (doto (set-values "my-file.txt" "/root"
+          actual (set-values "my-file.txt" "/root"
                                    :author "me"
                                    :comments "ahoy!"
-                                   :tags ["ready" "done"]))]
+                                   :tags ["ready" "done"])]
       (is (= actual expected)))))
