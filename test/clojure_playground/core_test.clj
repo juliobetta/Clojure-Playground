@@ -30,13 +30,13 @@
 ;; https://stackoverflow.com/a/21915601/561610
 (deftest build-character-test
   (testing "Build character with composition"
-    (let [expected {"appearsIn" ["New Hope"
+    (let [expected {:appearsIn ["New Hope"
                                  "Empire"
                                  "Jedi"]
-                    "firstName" "Anakin"
-                    "lastName"  "Skywalker"
-                    "planet"    "Tatooine"
-                    "sector"    "Arkanis"}
+                    :firstName "Anakin"
+                    :lastName  "Skywalker"
+                    :planet    "Tatooine"
+                    :sector    "Arkanis"}
           ;; composing functions with ->
           ;; -> (initial-value, ...fns)
           actual   (-> base-character with-apparitions with-address)]

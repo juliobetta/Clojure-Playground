@@ -24,17 +24,17 @@
   ))
 
 ; similar to `const` in JavaScript
-(def base-character {"firstName" "Anakin"
-                     "lastName"  "Skywalker"})
+(def base-character {:firstName "Anakin"
+                     :lastName  "Skywalker"})
 
 (defn with-address
   [options]
-  (merge options {"planet" "Tatooine"
-                  "sector" "Arkanis"}))
+  (merge options {:planet "Tatooine"
+                  :sector "Arkanis"}))
 
 (defn with-apparitions
   [options]
-  (merge options {"appearsIn" ["New Hope", "Empire", "Jedi"]}))
+  (merge options {:appearsIn ["New Hope", "Empire", "Jedi"]}))
 
 ;; named params and default values
 (defn set-values
