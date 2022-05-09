@@ -40,4 +40,23 @@
           ;; composing functions with ->
           ;; -> (initial-value, ...fns)
           actual   (doto (-> base-character with-apparitions with-address))]
-      (is (= expected actual)))))
+      (is (= actual expected)))))
+
+(deftest set-values-test
+  (testing "Set values without optionals"
+    (let [expected (doto ["file path: /root/my-file.txt"
+                          "author: root"])
+          actual (doto (set-values "my-file.txt" "/root"))]
+      (is (= actual expected))))
+
+  (testing "Set values with named params"
+    (let [expected (doto ["file path: /root/my-file.txt"
+                          "author: me"
+                          "comments: ahoy!"
+                          "tags: ready, done"])
+
+          actual (doto (set-values "my-file.txt" "/root"
+                                   :author "me"
+                                   :comments "ahoy!"
+                                   :tags ["ready" "done"]))]
+      (is (= actual expected)))))
